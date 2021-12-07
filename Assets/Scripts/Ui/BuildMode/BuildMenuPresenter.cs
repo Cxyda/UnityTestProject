@@ -22,8 +22,6 @@ namespace Ui.BuildMode
         private Rigidbody _rigidBody;
         private Collider _objectCollider;
         
-        private DeviceOrientation _deviceOrientation;
-
         private void Awake()
         {
             _gameModeManager.GameModeSwitchedEvent += OnGameModeSwitched;
@@ -76,11 +74,6 @@ namespace Ui.BuildMode
         }
         private void CheckDeviceOrientation()
         {
-            if (_deviceOrientation == Input.deviceOrientation)
-            {
-                return;
-            }
-
             if (Screen.width > 1400)
             {
                 BuildMenuPanel.anchoredPosition = new Vector2(0, 100);
@@ -92,7 +85,6 @@ namespace Ui.BuildMode
                 BuildMenuPanel.anchoredPosition = new Vector2(0, 500);
 
             }
-            _deviceOrientation = Input.deviceOrientation;
         }
 
         public void ConfirmObjectPlacement()
